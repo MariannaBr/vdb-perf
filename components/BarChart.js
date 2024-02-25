@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import data from "../src/data/testData.json";
 
-const LineChart = () => {
+const BarChart = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
 
@@ -18,27 +18,13 @@ const LineChart = () => {
 
     // Create a new chart instance
     chartInstance.current = new Chart(ctx, {
-      type: "line",
+      type: "bar",
       data: data,
       options: {
-        plugins: {
-          legend: {
-            display: true,
-            position: "right",
-          },
-        },
-        scales: {
-          y: {
-            title: {
-              display: true,
-              text: "Y-Axis Label",
-            },
-          },
-          x: {
-            title: {
-              display: true,
-              text: "X-Axis Label",
-            },
+        legend: {
+          display: true,
+          labels: {
+            color: "rgb(255, 99, 132)",
           },
         },
       },
@@ -55,4 +41,4 @@ const LineChart = () => {
   return <canvas ref={chartRef} />;
 };
 
-export default LineChart;
+export default BarChart;

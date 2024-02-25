@@ -1,11 +1,17 @@
 {
-  "labels": ["January", "February", "March", "April", "May", "June", "July"],
+  "labels": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
   "datasets": [
     {
-      "label": "My First Dataset",
+      "label": "Pinecone, us-central1-gcp, p2.x8, 768 dims, cosine",
+      "backgroundColor": "#34D399",
+      "borderColor": "#34D399",
+      "data": [0.05, 0.08, 0.1, 0.12, 0.15, 0.2, 0.25, 0.35, 0.5, 0.8]
+    },
+    {
+      "label": "Pinecone, us-central1-gcp, p2.x8, 768 dims, cosine",
       "backgroundColor": "rgb(255, 99, 132)",
       "borderColor": "rgb(255, 99, 132)",
-      "data": [0, 10, 5, 2, 20, 30, 45]
+      "data": [0.05, 0.08, 0.1, 0.12, 0.15, 0.2, 0.25, 0.35, 0.5, 0.8]
     }
   ]
 }

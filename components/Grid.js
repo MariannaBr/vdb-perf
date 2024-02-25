@@ -1,38 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { AgGridReact } from "ag-grid-react"; // AG Grid Component
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { AgGridReact } from "ag-grid-react";
+
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 
-const GridExample = () => {
-  // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState([
-    //   { make: "Tesla", model: "Model Y", price: 64950, electric: true },
-    //   { make: "Ford", model: "F-Series", price: 33850, electric: false },
-    //   { make: "Toyota", model: "Corolla", price: 29600, electric: false },
-  ]);
+const Grid = () => {
+  const gridRef = useRef();
+  const [rowData, setRowData] = useState([]);
 
   useEffect(() => {
-    fetch("../api/staff")
+    fetch("../src/data/gridTestdata")
       .then((response) => response.json())
       .then((data) => setRowData(data.rows));
   }, []);
 
-  // Column Definitions: Defines the columns to be displayed.
-  const [colDefs, setColDefs] = useState([
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "electric" },
+  const defaultColDef = {
+    resizable: true,
+    sortable: true,
+  };
+
+  const [columnDefs] = useState([
+    { headerName: "First Name", field: "first_name" },
+    { headerName: "Last Name", field: "last_name" },
+    { headerName: "Job Title", field: "job_title" },
+    { field: "office" },
+    { field: "email" },
+    { field: "phone" },
   ]);
+
   return (
-    // wrapping container with theme & size
-    <div
-      className="ag-theme-quartz" // applying the grid theme
-      style={{ height: 500 }} // the grid will fill the size of the parent container
-    >
-      <AgGridReact rowData={rowData} columnDefs={colDefs} />
+    <div className="ag-theme-alpine" style={{ height: "600px" }}>
+      <AgGridReact
+        id="staff_grid"
+        ref={gridRef}
+        rowData={rowData}
+        defaultColDef={defaultColDef}
+        columnDefs={columnDefs}
+        rowSelection={"single"}
+        style={{ height: "100%", width: "100%" }}
+      ></AgGridReact>
     </div>
   );
 };
 
-export default GridExample;
+export default Grid;

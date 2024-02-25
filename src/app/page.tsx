@@ -1,6 +1,8 @@
 import Image from "next/image";
 import GridExample from "../../components/Grid";
 import LineChart from "../../components/LineChart";
+import Grid from "../../components/Grid";
+import BarChart from "../../components/BarChart";
 
 export default function Home() {
   return (
@@ -28,8 +30,9 @@ export default function Home() {
           aliqua.
         </p>
       </div>
-      {/* <GridExample /> */}
       <LineChart />
+      {/* <BarChart />
+      <Grid /> */}
     </main>
   );
 }
