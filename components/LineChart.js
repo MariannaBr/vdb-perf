@@ -25,19 +25,28 @@ const LineChart = () => {
           legend: {
             display: true,
             position: "right",
+            labels: {
+              boxWidth: 4,
+            },
           },
         },
         scales: {
           y: {
             title: {
               display: true,
-              text: "Y-Axis Label",
+              text: "Latency [s]",
+              font: {
+                size: 18,
+              },
             },
           },
           x: {
             title: {
               display: true,
-              text: "X-Axis Label",
+              text: "QPS",
+              font: {
+                size: 18,
+              },
             },
           },
         },
